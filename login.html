@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Авторизация</h1>
+    <form action="login_handler.php" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="role">Роль:</label>
+        <select name="role" id="role">
+            <option value="student">Ученик</option>
+            <option value="teacher">Учитель</option>
+        </select>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+        <br>
+        <div id="student-fields">
+            <label for="password">Пароль:</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div id="teacher-fields" style="display:none;">
+            <label for="teacher_code">Код учителя:</label>
+            <input type="text" name="teacher_code" id="teacher_code">
+        </div>
+        <br>
+        <button type="submit">Авторизоваться</button>
+    </form>
+    <p>Нет аккаунта? <a href="index.html">Регистрация здесь</a>.</p>
+    <script>
+        document.getElementById('role').addEventListener('change', function() {
+            if (this.value === 'student') {
+                document.getElementById('student-fields').style.display = 'block';
+                document.getElementById('teacher-fields').style.display = 'none';
+            } else {
+                document.getElementById('student-fields').style.display = 'none';
+                document.getElementById('teacher-fields').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
