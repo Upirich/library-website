@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
 $sql = "SELECT * FROM books WHERE amount > 0";
 $result = $conn->query($sql);
 
-echo "<h1>Available Books</h1>";
+echo "<h1>Доступные книги</h1>";
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<div style='border: 1px solid #ccc; padding: 10px; margin: 10px;'>";

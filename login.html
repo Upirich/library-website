@@ -17,10 +17,8 @@
         <label for="email">Email:</label>
         <input type="email" name="email" id="email">
         <br>
-        <div id="student-fields">
-            <label for="password">Пароль:</label>
-            <input type="password" name="password" id="password">
-        </div>
+        <label for="password">Пароль:</label>
+        <input type="password" name="password" id="password">
         <div id="teacher-fields" style="display:none;">
             <label for="teacher_code">Код учителя:</label>
             <input type="text" name="teacher_code" id="teacher_code">
@@ -32,14 +30,11 @@
     <script>
         document.getElementById('role').addEventListener('change', function() {
             if (this.value === 'student') {
-                document.getElementById('student-fields').style.display = 'block';
                 document.getElementById('teacher-fields').style.display = 'none';
             } else {
-                document.getElementById('student-fields').style.display = 'none';
                 document.getElementById('teacher-fields').style.display = 'block';
             }
         });
     </script>
-    <button type="button" style="width: 100px; height: 40px; color: green;" onclick="document.location='index.html'">Регстрация здесь</button>
 </body>
 </html>
