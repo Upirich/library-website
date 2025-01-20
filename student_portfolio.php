@@ -1,11 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
     header("Location: login.html");
     exit();
 }
+$_SESSION['zahodcount'] = 1;
+?>
 
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+<link rel="stylesheet" href="styles.css">
+<div id="wrapper">
+    <div id="menu">
+        <a href="#" class="shkbbl">Школьная библиотека №224</a>
+        <a href="#" class="hrefpgkn1">Профиль</a>
+        <a href="login.html" class="hrefpgvh">Вход</a>
+        <a href="index.html" class="hrefpgreg1">Регистрация</a>
+    </div>
+</div>
+</head>
+
+<?php
 include "db_connect.php";
+
+echo "<a href='unlogin.php' class='unlogin'>Выйти из аккаунта</a>";
 $user_id = $_SESSION['user_id'];
 
 $sql = "SELECT * FROM notifications WHERE user_id = $user_id AND is_read = 0 ORDER BY created_at DESC";

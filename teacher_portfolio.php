@@ -1,11 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {
     header("Location: login.html");
     exit();
 }
+$_SESSION['zahodcount'] = 2;
+?>
 
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+<link rel="stylesheet" href="styles.css">
+<div id="wrapper">
+    <div id="menu">
+        <a href="#" class="shkbbl">Школьная библиотека №224</a>
+        <a href="#" class="hrefpgkn1">Профиль</a>
+        <a href="login.html" class="hrefpgvh">Вход</a>
+        <a href="index.html" class="hrefpgreg1">Регистрация</a>
+    </div>
+</div>
+</head>
+
+<?php
 include "db_connect.php";
+echo "<a href='unlogin.php' class='unlogin'>Выйти из аккаунта</a>";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_book'])) {
     $name = $_POST['name'];
@@ -128,13 +149,13 @@ if ($books_result->num_rows > 0) {
 
 echo "<h1>Добавить книгу</h1>";
 echo "<form method='POST' action='teacher_portfolio.php' enctype='multipart/form-data'>
-        <label for='name'>Имя:</label>
-        <input type='text' name='name' id='name' required>
+        <label for='name' class='name'>Название:</label>
+        <input type='text' name='name' id='name1' required>
         <br>
-        <label for='amount'>Количество:</label>
+        <label for='amount' class='amount'>Количество:</label>
         <input type='number' name='amount' id='amount' required>
         <br>
-        <label for='image'>Картинка:</label>
+        <label for='image' class='image'>Картинка:</label>
         <input type='file' name='image' id='image' accept='image/*'>
         <br>
         <button type='submit' name='add_book'>Добавить</button>

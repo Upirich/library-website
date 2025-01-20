@@ -1,3 +1,111 @@
+.regsv {
+    position: absolute;
+	top: 100px;
+    left: 725px
+}
+#wrapper {
+	width: 1500px;
+}
+
+#menu {
+	display: flex;
+	justify-content: left;
+	margin-bottom: 20px;
+	background-color: #278b00;
+}
+#menu a {
+	margin: 0 5px;
+	padding: 15px 25px;
+	text-decoration: none;
+	color: #000000;
+	font: bold 14px Arial;
+}
+#menu a:hover, #menu a.hrefpgreg, #menu a.hrefpgvh1, #menu a.hrefpgkn1 {
+	color: #000000;
+	background-color: #1d5c04;
+}
+.hrefpgreg, .hrefpgreg1 {
+    position: absolute;
+    left: 1375px
+}
+.hrefpgvh, .hrefpgvh1 {
+    position: absolute;
+    left: 1295px
+}
+.hrefpgkn, .hrefpgkn1 {
+    position: absolute;
+    left: 1195px
+}
+.zareg {
+    position: absolute;
+	top: 290px;
+    left: 670px
+}
+#ahaa {
+    position: absolute;
+	top: 306px;
+    left: 575px
+}
+#role {
+    position: absolute;
+	top: 110px;
+    left: 600px
+}
+#dhaa {
+    position: absolute;
+	top: 230px;
+    left: 600px
+}
+#name {
+    position: absolute;
+	top: 230px;
+    left: 600px
+}
+.name1 {
+    position: absolute;
+	top: 230px;
+    left: 560px
+}
+#surname {
+    position: absolute;
+	top: 207px;
+    left: 600px
+}
+.surname1 {
+    position: absolute;
+	top: 207px;
+    left: 523px
+}
+#class {
+    position: absolute;
+	top: 183px;
+    left: 600px
+}
+.class1 {
+    position: absolute;
+	top: 183px;
+    left: 548px
+}
+#password {
+    position: absolute;
+	top: 158px;
+    left: 600px
+}
+.password1 {
+    position: absolute;
+	top: 158px;
+    left: 536px
+}
+#email {
+    position: absolute;
+	top: 133px;
+    left: 600px
+}
+.email1 {
+    position: absolute;
+	top: 133px;
+    left: 552px
+}
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -30,4 +138,42 @@ button {
 
 button:hover {
     background-color: #218838;
+}
+.button {
+    position: absolute;
+	top: 266px;
+    left: 630px
+}
+#teacher_code {
+    position: absolute;
+	top: 184px;
+    left: 600px
+}
+.teacher_code {
+    position: absolute;
+	top: 184px;
+    left: 501px
+}
+.button1 {
+    position: absolute;
+    top: 224px;
+    left: 650px;
+}
+#ahaa1 {
+    position: absolute;
+	top: 264px;
+    left: 575px
+}
+.unlogin {
+    position: absolute;
+    top: 20px;
+    left: 1500px;
+    text-decoration: none;
+	color: #000000;
+	font: bold 14px Arial;
+    background-color: #278b00;
+    padding: 15px 25px;
+}
+.unlogin:hover {
+    background-color: #1d5c04;
 }
