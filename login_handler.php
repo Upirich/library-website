@@ -23,7 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($row['role'] === 'student') {
                 header("Location: student_portfolio.php");
             } else {
+                if ($_POST['teacher_code'] === 'sch224teacher') {
                 header("Location: teacher_portfolio.php");
+                }
+                else {
+                    echo "Invalid teacher code! <a href='login.html'>Try again</a>.";
+                }
             }
             exit();
         } else {

@@ -2,43 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Регистрация</title>
+    <title>Register</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Регистрация</h1>
-    <form action="register.php" method="post" enctype="application/x-www-form-urlencoded">
-        <label for="role">Роль:</label>
+    <form action="register.php" method="post">
+        <label for="role"></label>
         <select name="role" id="role">
             <option value="student">Ученик</option>
             <option value="teacher">Учитель</option>
         </select>
-        <br>
         <div id="student-fields">
-            <label for="name">Имя:</label>
+            <label for="name" class="name1">Имя:</label>
             <input type="text" name="name" id="name">
-            <br>
-            <label for="surname">Фамилия:</label>
+            <label for="surname" class="surname1">Фамилия:</label>
             <input type="text" name="surname" id="surname">
-            <br>
-            <label for="class">Класс:</label>
+            <label for="class" class="class1">Класс:</label>
             <input type="text" name="class" id="class">
-            <br>
+        </div>
+        <div id="wrapper">
+            <div id="menu">
+                <a href="#" class="shkbbl">Школьная библиотека №224</a>
+                <a href="zahod.php" class="hrefpgkn">Профиль</a>
+                <a href="login.html" class="hrefpgvh">Вход</a>
+                <a href="#" class="hrefpgreg">Регистрация</a>
+            </div>
         </div>
         <div id="teacher-fields" style="display:none;">
-            <label for="teacher_code">Код учителя:</label>
+            <label for="teacher_code" class="teacher_code">Код учителя:</label>
             <input type="text" name="teacher_code" id="teacher_code">
-            <br>
         </div>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email">
-        <br>
-        <label for="password">Пароль:</label>
-        <input type="password" name="password" id="password">
-        <br>
-        <button type="submit">Зарегистрироваться</button>
+        <dev id="empass">
+        <label for="email" class="email1">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <label for="password" class="password1">Пароль:</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit" class="button">Регистрация</button>
+        </dev>
     </form>
-    <p>Уже есть аккаунт? <a href="login.html">Авторизация здесь</a>.</p>
+    <p id="ahaa">Уже есть аккаунт? <a href="login.html">Вход здесь</a>.</p>
     <script>
         document.getElementById('role').addEventListener('change', function() {
             if (this.value === 'student') {

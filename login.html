@@ -6,36 +6,38 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Авторизация</h1>
+    <div id="wrapper">
+        <div id="menu">
+            <a href="#" class="shkbbl">Школьная библиотека №224</a>
+            <a href="zahod.php" class="hrefpgkn">Профиль</a>
+            <a href="#" class="hrefpgvh1">Вход</a>
+            <a href="index.html" class="hrefpgreg1">Регистрация</a>
+        </div>
+    </div>
     <form action="login_handler.php" method="post" enctype="application/x-www-form-urlencoded">
-        <label for="role">Роль:</label>
         <select name="role" id="role">
             <option value="student">Ученик</option>
             <option value="teacher">Учитель</option>
         </select>
         <br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email">
+        <label for="email" class="email1">Email:</label>
+        <input type="email" name="email" id="email" required>
         <br>
-        <div id="student-fields">
-            <label for="password">Пароль:</label>
-            <input type="password" name="password" id="password">
-        </div>
+        <label for="password" class="password1">Пароль:</label>
+        <input type="password" name="password" id="password" required>
         <div id="teacher-fields" style="display:none;">
-            <label for="teacher_code">Код учителя:</label>
+            <label for="teacher_code" class="teacher_code">Код учителя:</label>
             <input type="text" name="teacher_code" id="teacher_code">
         </div>
         <br>
-        <button type="submit">Авторизоваться</button>
+        <button type="submit" class="button1">Войти</button>
     </form>
-    <p>Нет аккаунта? <a href="index.html">Регистрация здесь</a>.</p>
+    <p id="ahaa1">Нет аккаунта? <a href="index.html">Регистрация здесь</a>.</p>
     <script>
         document.getElementById('role').addEventListener('change', function() {
             if (this.value === 'student') {
-                document.getElementById('student-fields').style.display = 'block';
                 document.getElementById('teacher-fields').style.display = 'none';
             } else {
-                document.getElementById('student-fields').style.display = 'none';
                 document.getElementById('teacher-fields').style.display = 'block';
             }
         });
