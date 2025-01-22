@@ -17,9 +17,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("ssssss", $name, $surname, $class, $email, $password, $role);
     } else {
         $teacher_code = $_POST['teacher_code'];
-
-        $stmt = $conn->prepare("INSERT INTO users (email, password, role, teacher_code) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $email, $password, $role, $teacher_code);
+        $file = fopen("teacher_code.txt", "r");
+        $str = fgets($file);
+        fclose($file);
+        if ($teacher_code === $str) {
+            $stmt = $conn->prepare("INSERT INTO users (email, password, role, teacher_code) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $email, $password, $role, $teacher_code);
+        } else {
+            echo "Invalid teacher code! <a href='index.html'>Try again</a>";
+        }
     }
 
     if ($stmt->execute()) {

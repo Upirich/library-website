@@ -23,7 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($row['role'] === 'student') {
                 header("Location: student_portfolio.php");
             } else {
-                if ($_POST['teacher_code'] === 'sch224teacher') {
+                $file = fopen("teacher_code.txt", "r");
+                $str = fgets($file);
+                fclose($file);
+                if ($_POST['teacher_code'] === $str) {
                 header("Location: teacher_portfolio.php");
                 }
                 else {
