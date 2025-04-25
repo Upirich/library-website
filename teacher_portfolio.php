@@ -27,61 +27,6 @@ $_SESSION['zahodcount'] = 2;
 include "db_connect.php";
 echo "<a href='unlogin.php' class='unlogin'>Выйти из аккаунта</a>";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_book'])) {
-    $name = $_POST['name'];
-    $amount = $_POST['amount'];
-
-    if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-        $upload_dir = 'uploads/';
-        if (!is_dir($upload_dir)) {
-            mkdir($upload_dir, 0755, true);
-        }
-
-        $file_name = basename($_FILES['image']['name']);
-        $file_path = $upload_dir . $file_name;
-
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $file_path)) {
-            $sql = "INSERT INTO books (name, amount, image_path) VALUES ('$name', $amount, '$file_path')";
-            if ($conn->query($sql) === TRUE) {
-                echo "<p>Книга успешно добавлена!</p>";
-            } else {
-                echo "<p>Ошибка в добавлении книги: " . $conn->error . "</p>";
-            }
-        } else {
-            echo "<p>Ошибка добавления картинки!</p>";
-        }
-    } else {
-        $sql = "INSERT INTO books (name, amount) VALUES ('$name', $amount)";
-        if ($conn->query($sql) === TRUE) {
-            echo "<p>Книга успешно добавлена!</p>";
-        } else {
-            echo "<p>Ошиька добавления книги: " . $conn->error . "</p>";
-        }
-    }
-}
-
-if (isset($_GET['delete_book'])) {
-    $book_id = $_GET['delete_book'];
-
-    $sql = "SELECT image_path FROM books WHERE id = $book_id";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $image_path = $row['image_path'];
-
-        $sql = "DELETE FROM books WHERE id = $book_id";
-        if ($conn->query($sql) === TRUE) {
-            if (!empty($image_path) && file_exists($image_path)) {
-                unlink($image_path);
-            }
-            echo "<p>Книга успешно удалена!</p>";
-        } else {
-            echo "<p>Ошибка удаления книги: " . $conn->error . "</p>";
-        }
-    } else {
-        echo "<p>Книга не найдена!</p>";
-    }
-}
 
 $sql = "SELECT borrow_requests.id, users.name, users.surname, books.name AS book_name, borrow_requests.request_date 
         FROM borrow_requests 
@@ -139,7 +84,7 @@ if ($books_result->num_rows > 0) {
             echo "<p>Нет картинки.</p>";
         }
         echo "<p>Доступно: " . $row["amount"] . "</p>";
-        echo "<a href='teacher_portfolio.php?delete_book=" . $row["id"] . "' onclick='return confirm(\"Вы уверены?\")'>Удалить</a>";
+        echo "<a href='delete_book_handler.php?delete_book=" . $row["id"] . "' onclick='return confirm(\"Вы уверены?\")'>Удалить</a>";
         echo "</div>";
     }
 } else {
@@ -147,7 +92,7 @@ if ($books_result->num_rows > 0) {
 }
 
 echo "<h1>Добавить книгу</h1>";
-echo "<form method='POST' action='teacher_portfolio.php' enctype='multipart/form-data'>
+echo "<form method='POST' action='add_book.php' enctype='multipart/form-data'>
         <label for='name' class='name'>Название:</label>
         <input type='text' name='name' id='name1' required>
         <br>
